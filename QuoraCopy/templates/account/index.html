@@ -19,7 +19,7 @@
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Sign Up</h2>
         </div>
-        <form action="" method="post">
+        <form action="{% url 'signup' %}" method="post">
           {% if next %}
           <input type="hidden" name='next' value ="{{next}}">
           {% endif %}
@@ -58,7 +58,7 @@
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Login</h2>
         </div>
-        <form action="" method="post">
+        <form action="{% url 'login' %}" method="post">
           {% if next %}
           <input type="hidden" name='next' value ="{{next}}">
           {% endif %}

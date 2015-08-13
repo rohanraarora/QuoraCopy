@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from account import urls as account_urls
 urlpatterns = [
+    url(r'^$','account.views.home',name="home"),
     url(r'^account/',include(account_urls)),
     url(r'^admin/', include(admin.site.urls)),
 ] + static.static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

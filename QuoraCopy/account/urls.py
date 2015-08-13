@@ -15,5 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 urlpatterns = [
-   url(r'^$','account.views.home',name="home"),
+    url(r'^signup/$','account.views.handleSignup',name="signup"),
+    url(r'^login/$','account.views.handleLogin',name="login"),
+    url(r'^activate/$', 'account.views.activateaccount', name='activate'),
 ]
