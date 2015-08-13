@@ -5,6 +5,6 @@ from .forms import *
 
 def home(request):
     signupForm = SignUpForm();
-    loginForm = SignUpForm();
+    loginForm = LoginForm();
     data = {"signupForm":signupForm,"loginForm":loginForm}
     return render(request,"account/index.html",data);

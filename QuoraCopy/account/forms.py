@@ -1,5 +1,29 @@
 from django import forms
 from .models import QuoraUser
+from django.contrib.auth import authenticate
+
+class LoginForm(forms.Form):
+	username = forms.CharField(label = "Username")
+	password = forms.CharField(label = "password",widget=forms.PasswordInput)
+
+	def __init__(self,*args,**kwargs):
+		self.user_cache = None
+		super(LoginForm,self).__init__(*args,**kwargs)
+
+	def clean(self):
+		username = self.cleaned_data.get("username")
+		password = self.cleaned_data.get("password")
+		if username and Password:
+			self.user_cache = authenticate(username = username,password=password)
+			if self.user_cache is None:
+				raise forms.ValidationError("Please enter correct Username and Password")
+			elif not self.user_cache.is_active:
+				raise forms.ValidationError("Inactive User")
+		return self.cleaned_data
+
+	def get_user(self):
+		return self.user_cache
+
 class SignUpForm(forms.ModelForm):
 	password_text = forms.CharField(label="Password",widget=forms.PasswordInput)
 	confirm_password = forms.CharField(label="Confirm Password",widget = forms.PasswordInput,help_text = "Confirm your password")

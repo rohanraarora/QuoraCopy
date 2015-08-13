@@ -1,8 +1,12 @@
 {% load staticfiles %}
+{% load account_filters %}
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'account/index.css' %}">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.red-indigo.min.css" />
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>QuoraCopy</title>
 </head>
 <body>
@@ -10,23 +14,64 @@
     <a href="" id="logo"></a>
   </header>
   <main>
-    <div class="container">
-      <div id="signup">
+    <div class="mdl-card mdl-shadow--2dp mdl-grid" id="container">
+      <div class="mdl-cell mdl-cell--6-col" id="signup">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Sign Up</h2>
+        </div>
         <form action="" method="post">
           {% if next %}
           <input type="hidden" name='next' value ="{{next}}">
           {% endif %}
           {% csrf_token %}
-          {{signupForm.as_p}}
+          <div class="mdl-grid" id="form_name_row">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-first mdl-cell--6-col">
+              {{ signupForm.first_name|addAttributes:'{"class":"mdl-textfield__input","type":"text"}'}}
+              <label class="mdl-textfield__label" for="id_first_name">First Name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-last mdl-cell--6-col">
+              {{ signupForm.last_name|addAttributes:'{"class":"mdl-textfield__input","type":"text"}'}}
+              <label class="mdl-textfield__label" for="id_last_name">Last Name</label>
+            </div>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-username">
+            {{ signupForm.username|addAttributes:'{"class":"mdl-textfield__input","type":"text"}'}}
+            <label class="mdl-textfield__label" for="id_username">Username</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-email">
+            {{ signupForm.email|addAttributes:'{"class":"mdl-textfield__input","type":"text"}'}}
+            <label class="mdl-textfield__label" for="id_email">Email Id</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-password">
+            {{ signupForm.password_text|addAttributes:'{"class":"mdl-textfield__input","type":"password"}'}}
+            <label class="mdl-textfield__label" for="id_password_text">Password</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-confirm_password">
+            {{ signupForm.confirm_password|addAttributes:'{"class":"mdl-textfield__input","type":"password"}'}}
+            <label class="mdl-textfield__label" for="id_confirm_password">Confirm Password</label>
+          </div>
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" value="Sign Up">
         </form>
       </div>
-      <div id="login">
+      <div id="login" class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Login</h2>
+        </div>
         <form action="" method="post">
           {% if next %}
           <input type="hidden" name='next' value ="{{next}}">
           {% endif %}
           {% csrf_token %}
-          {{ loginForm.as_p}}
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-username">
+            {{ loginForm.username|addAttributes:'{"class":"mdl-textfield__input","type":"text"}'}}
+            <label class="mdl-textfield__label" for="id_username">Username</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-password">
+            {{ loginForm.password|addAttributes:'{"class":"mdl-textfield__input","type":"password"}'}}
+            <label class="mdl-textfield__label" for="id_password">Password</label>
+          </div>
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" value="Login">
         </form>
       </div>
     </div>

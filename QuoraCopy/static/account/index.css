@@ -8,23 +8,22 @@ header{
   justify-content: space-around;
 }
 
-.container{
+#container{
   display: flex;
+  width: 45%;
   justify-content: space-around;
 }
 
-#signup{
-    width: 40%;
-
-}
-
-#login{
-    width: 40%;
-}
 
 #logo{
   width: 200px;
   height: 80px;
   background-repeat: no-repeat;
   background-image: url("http://127.0.0.1:8000/static/images/logo.svg");
+}
+
+#form_name_row{
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
 }
