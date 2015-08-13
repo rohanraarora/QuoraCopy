@@ -1,0 +1,16 @@
+from django.db import models
+from account.models import QuoraUser
+from topics.models import Topic
+# Create your models here.
+
+class Question(models.Model):
+	title = models.CharField(max_length = 128,blank = False,null = False)
+	desc = models.TextField(max_length = 8192)
+	by = models.ForeignKey(QuoraUser,related_name = "asked_by")
+	timestamp = models.DateTimeField(auto_now_add = True)
+	views_count = models.IntegerField(default = 0)
+	tags = models.ManyToManyField(Topic,related_name= "tags")
+	followers = models.ManyToManyField(User,related_name="question_followers")
+	
+	def __str__(self):
+		return self.title

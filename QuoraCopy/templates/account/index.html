@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'account/index.css' %}">
+  <title>QuoraCopy</title>
+</head>
+<body>
+  <header>
+    <a href="" id="logo"></a>
+  </header>
+  <main>
+    <div class="container">
+      <div id="signup">
+        <form action="" method="post">
+          {% if next %}
+          <input type="hidden" name='next' value ="{{next}}">
+          {% endif %}
+          {% csrf_token %}
+          {{signupForm.as_p}}
+        </form>
+      </div>
+      <div id="login">
+        <form action="" method="post">
+          {% if next %}
+          <input type="hidden" name='next' value ="{{next}}">
+          {% endif %}
+          {% csrf_token %}
+          {{ loginForm.as_p}}
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

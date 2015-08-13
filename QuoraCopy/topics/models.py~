@@ -1,0 +1,12 @@
+from django.db import models
+from account.models import QuoraUser
+# Create your models here.
+
+class Topic(models.Model):
+	name = models.CharField(max_length = 128,blank = False,null = False)
+	desc = models.TextField(max_length = 8192,blank = True,null = True)
+	pic = models.ImageField(upload_to = "/topics/pics")
+
+	def __str__(self):
+		return self.name
+

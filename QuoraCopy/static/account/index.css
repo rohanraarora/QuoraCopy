@@ -1,0 +1,30 @@
+body{
+  background-image: url("http://127.0.0.1:8000/static/images/home_bg.png");
+
+}
+header{
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-around;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+}
+
+#signup{
+    width: 40%;
+
+}
+
+#login{
+    width: 40%;
+}
+
+#logo{
+  width: 200px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-image: url("http://127.0.0.1:8000/static/images/logo.svg");
+}
